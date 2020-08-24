@@ -222,18 +222,11 @@ namespace eosio {
 				"issue"_n,
 				std::make_tuple(_self,amount,std::string("issue"))
 	  		}.send();
-			asset send = asset((double)amount.amount * 0.995,amount.symbol);
 			action{
 				permission_level{_self, "active"_n},
 				_self,
 				"transfer"_n,
 				std::make_tuple(_self,from,send,std::string("transfer"))
-	  		}.send();
-			action{
-				permission_level{_self, "active"_n},
-				_self,
-				"transfer"_n,
-				std::make_tuple(_self,"stable.ly"_n,amount-send,std::string("fee"))
 	  		}.send();
 		}
 		[[eosio::action]]
