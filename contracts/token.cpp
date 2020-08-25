@@ -241,6 +241,7 @@ namespace eosio {
 			auto it = accountstable.find(token.code().raw());
 			if(it==accountstable.end()) {
 				send.set_amount(send.amount-240);
+				amount.set_amount(amount.amount-240);
 			}
 			action{
 				permission_level{_self, "active"_n},
